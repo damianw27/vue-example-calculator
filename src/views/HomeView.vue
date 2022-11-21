@@ -1,31 +1,28 @@
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { evaluate } from 'mathjs';
+import { defineComponent } from "vue";
+import { evaluate } from "mathjs";
 
-const operatorsRegex = /[*|\/|-|+]/g;
+const operatorsRegex = /[*|/|-|+]/g;
 
 export default defineComponent({
-  name: 'HomeView',
+  name: "HomeView",
   data() {
-    return {
-      result: '',
-      shouldReset: false,
-    }
+    return {};
   },
   methods: {
     lastResultChar(): string {
-      return '';
+      return "";
     },
     provideValue(value: string): void {},
     solve(): void {},
     clear(): void {},
-    clearEnd(): void {} 
+    clearEnd(): void {},
   },
   computed: {
     shouldDisableOperatorSign(): boolean {
       return false;
-    }
-  }
+    },
+  },
 });
 </script>
 
@@ -34,35 +31,35 @@ export default defineComponent({
     <table id="calculator-table">
       <tbody>
         <tr>
-          <td colspan="4"><input type="text" v-bind:value="result"></td>
+          <td colspan="4"><input type="text" /></td>
         </tr>
         <tr>
-          <td colspan="3"><input type="button" value="C"></td>
-          <td><input type="button" value="CE"></td>
+          <td colspan="3"><input type="button" value="C" /></td>
+          <td><input type="button" value="CE" /></td>
         </tr>
         <tr>
-          <td><input type="button" value="1"></td>
-          <td><input type="button" value="2"></td>
-          <td><input type="button" value="3"></td>
-          <td><input type="button" value="/"></td>
+          <td><input type="button" value="1" /></td>
+          <td><input type="button" value="2" /></td>
+          <td><input type="button" value="3" /></td>
+          <td><input type="button" value="/" /></td>
         </tr>
         <tr>
-          <td><input type="button" value="4"></td>
-          <td><input type="button" value="5"></td>
-          <td><input type="button" value="6"></td>
-          <td><input type="button" value="*"></td>
+          <td><input type="button" value="4" /></td>
+          <td><input type="button" value="5" /></td>
+          <td><input type="button" value="6" /></td>
+          <td><input type="button" value="*" /></td>
         </tr>
         <tr>
-          <td><input type="button" value="7"></td>
-          <td><input type="button" value="8"></td>
-          <td><input type="button" value="9"></td>
-          <td><input type="button" value="-"></td>
+          <td><input type="button" value="7" /></td>
+          <td><input type="button" value="8" /></td>
+          <td><input type="button" value="9" /></td>
+          <td><input type="button" value="-" /></td>
         </tr>
         <tr>
-          <td><input type="button" value="0"></td>
-          <td><input type="button" value="."></td>
-          <td><input type="button" value="="></td>
-          <td><input type="button" value="+"></td>
+          <td><input type="button" value="0" /></td>
+          <td><input type="button" value="." /></td>
+          <td><input type="button" value="=" /></td>
+          <td><input type="button" value="+" /></td>
         </tr>
       </tbody>
     </table>
