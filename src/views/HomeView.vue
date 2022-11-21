@@ -14,41 +14,16 @@ export default defineComponent({
   },
   methods: {
     lastResultChar(): string {
-      return this.result.charAt(this.result.length - 1);
+      return '';
     },
-    provideValue(value: string): void {
-      if (this.shouldReset) {
-        this.result = '';
-        this.shouldReset = false;
-      }
-
-      const lastChar = this.lastResultChar();
-
-      if (lastChar === value) {
-        return;
-      }
-
-      if (lastChar.match(operatorsRegex) && value.match(operatorsRegex) && lastChar !== value) {
-        this.clearEnd();
-      }
-
-      this.result += value;
-    },
-    solve(): void {
-      const solvedEquation = evaluate(this.result);
-      this.result = solvedEquation;
-      this.shouldReset = true;
-    },
-    clear(): void {
-      this.result = '';
-    },
-    clearEnd(): void {
-      this.result = this.result?.substring(0, this.result.length - 1) ?? '';
-    } 
+    provideValue(value: string): void {},
+    solve(): void {},
+    clear(): void {},
+    clearEnd(): void {} 
   },
   computed: {
     shouldDisableOperatorSign(): boolean {
-      return this.result === '';
+      return false;
     }
   }
 });
@@ -62,32 +37,32 @@ export default defineComponent({
           <td colspan="4"><input type="text" v-bind:value="result"></td>
         </tr>
         <tr>
-          <td colspan="3"><input type="button" value="C" @click="clear()"></td>
-          <td><input type="button" value="CE" @click="clearEnd()"></td>
+          <td colspan="3"><input type="button" value="C"></td>
+          <td><input type="button" value="CE"></td>
         </tr>
         <tr>
-          <td><input type="button" value="1" @click="provideValue('1')"></td>
-          <td><input type="button" value="2" @click="provideValue('2')"></td>
-          <td><input type="button" value="3" @click="provideValue('3')"></td>
-          <td><input type="button" value="/" @click="provideValue('/')" :disabled="shouldDisableOperatorSign"></td>
+          <td><input type="button" value="1"></td>
+          <td><input type="button" value="2"></td>
+          <td><input type="button" value="3"></td>
+          <td><input type="button" value="/"></td>
         </tr>
         <tr>
-          <td><input type="button" value="4" @click="provideValue('4')"></td>
-          <td><input type="button" value="5" @click="provideValue('5')"></td>
-          <td><input type="button" value="6" @click="provideValue('6')"></td>
-          <td><input type="button" value="*" @click="provideValue('*')" :disabled="shouldDisableOperatorSign"></td>
+          <td><input type="button" value="4"></td>
+          <td><input type="button" value="5"></td>
+          <td><input type="button" value="6"></td>
+          <td><input type="button" value="*"></td>
         </tr>
         <tr>
-          <td><input type="button" value="7" @click="provideValue('7')"></td>
-          <td><input type="button" value="8" @click="provideValue('8')"></td>
-          <td><input type="button" value="9" @click="provideValue('9')"></td>
-          <td><input type="button" value="-" @click="provideValue('-')" :disabled="shouldDisableOperatorSign"></td>
+          <td><input type="button" value="7"></td>
+          <td><input type="button" value="8"></td>
+          <td><input type="button" value="9"></td>
+          <td><input type="button" value="-"></td>
         </tr>
         <tr>
-          <td><input type="button" value="0" @click="provideValue('0')"></td>
-          <td><input type="button" value="." @click="provideValue('.')"></td>
-          <td><input type="button" value="=" @click="solve()"></td>
-          <td><input type="button" value="+" @click="provideValue('+')" :disabled="shouldDisableOperatorSign"></td>
+          <td><input type="button" value="0"></td>
+          <td><input type="button" value="."></td>
+          <td><input type="button" value="="></td>
+          <td><input type="button" value="+"></td>
         </tr>
       </tbody>
     </table>
